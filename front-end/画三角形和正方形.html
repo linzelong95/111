@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 
+      https://blog.csdn.net/weixin_48649246/article/details/127939139
+      div+p 相邻兄弟选择器（1 个同层级的 p）
+div～p 通用兄弟选择器（n 个同层级的 p） 
+div>P 子选择器（n个次层级的P（不包含孙层级））
+div p 后代选择器 （n 个子/孙 P） */
+
+      /* 画三角形 */
+      .trangle {
+        width: 0px;
+        height: 0px;
+        border-bottom: 100px solid red;
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+      }
+
+      /* 画正方形 */
+      .square {
+        width: 20%;
+        height: 0px;
+        /* padding 百分比是相对父元素计算的，非本元素 */
+        padding-top: 20%;
+        background-color: red;
+      }
+
+      /* 画正方形（伪元素） */
+      .square {
+        width: 20%;
+        background-color: red;
+      }
+      .square::after {
+        /* 此时 .square 是伪元素的父元素 */
+        padding-top: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="trangle"></div>
+
+    <div class="square"></div>
+  </body>
+</html>

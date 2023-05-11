@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #list {
+        background: red;
+        padding: 20px;
+      }
+      #list li {
+        background: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </body>
+  <script>
+    window.onload = function () {
+      // 事件委托，性能较好
+      const ulEl = document.getElementById("list");
+      ulEl.addEventListener(
+        "click",
+        (event) => {
+          alert([...ulEl.children].indexOf(event.target));
+        },
+        false
+      );
+
+      // 性能较差
+      const lis = document.querySelectorAll("#list li");
+      lis.forEach((li, index) => {
+        li.addEventListener(
+          "click",
+          (e) => {
+            console.log(index);
+          },
+          false
+        );
+      });
+    };
+  </script>
+</html>
